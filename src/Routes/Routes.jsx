@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import Main from "../Layouts/Main";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Main></Main>,
   },
 ]);
