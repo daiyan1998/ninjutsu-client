@@ -18,7 +18,8 @@ const ClassesPage = () => {
       </div>
       <div className="w-full bg-gray-100 px-10 pt-10">
         <div className="container mx-auto">
-          <div className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around">
+          {/* <div className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"> */}
+          <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
             {instructors.map((instructor) => (
               <ClassCard instructor={instructor}></ClassCard>
             ))}

@@ -79,7 +79,7 @@ const Content = () => {
             />
           </div>
         </div>
-        <div className="mt-14 ml-6">
+        <div className="mt-14 ml-6 md:block hidden">
           <div className="lg:flex ">
             <div>
               <img

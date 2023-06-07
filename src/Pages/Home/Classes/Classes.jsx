@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ClassCard from "./ClassCard";
+import ClassCard from "../../../Components/ClassCard";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,7 +13,8 @@ import Heading from "../../Shared/Heading/Heading";
 import useData from "../../../Hooks/useData";
 
 const Classes = () => {
-  const { instructors } = useData;
+  const [instructors] = useData();
+  console.log("instructors:", instructors);
 
   return (
     <>
@@ -23,15 +24,27 @@ const Classes = () => {
       ></Heading>
       <div>
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
           pagination={{
             clickable: true,
           }}
           modules={[Pagination]}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            620: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+          }}
           className="mySwiper h-full w-full"
         >
-          {instructors.map((instructor) => (
+          {instructors?.map((instructor) => (
             <SwiperSlide>
               <ClassCard
                 key={instructor._id}

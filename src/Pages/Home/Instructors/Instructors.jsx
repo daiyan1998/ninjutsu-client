@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import "../../../style.css";
 
 // import required modules
 import { EffectCards, FreeMode, Pagination } from "swiper";
@@ -23,13 +24,25 @@ const Instructors = () => {
       ></Heading>
 
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
         freeMode={true}
         pagination={{
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          620: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        }}
         className="mySwiper"
       >
         {instructors.map((instructor) => (

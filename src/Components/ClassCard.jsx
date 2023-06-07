@@ -10,6 +10,7 @@ import { BsCurrencyDollar, BsFillPeopleFill } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 
 const ClassCard = ({ instructor }) => {
+  console.log("instructor:", instructor);
   const {
     name: className,
     price,
