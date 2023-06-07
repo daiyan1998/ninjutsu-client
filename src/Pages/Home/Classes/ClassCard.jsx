@@ -11,9 +11,8 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 
 const ClassCard = ({ data }) => {
   const { name: className, price, availableSeats, image } = data.classes[0];
-  console.log(data.classes[0]);
   return (
-    <div className=" bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+    <div className=" bg-white px-6 pt-6 pb-2 my-10 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
       <div className="relative">
         <img className="w-full rounded-xl" src={image} alt="Colors" />
       </div>
