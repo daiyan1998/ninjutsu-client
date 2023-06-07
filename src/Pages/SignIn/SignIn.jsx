@@ -36,7 +36,6 @@ const SignIn = () => {
               <span
                 tabIndex={0}
                 role="link"
-                aria-label="Sign up here"
                 className="font-semibold text-teal-500 leading-none underline cursor-pointer"
               >
                 {" "}
@@ -45,7 +44,6 @@ const SignIn = () => {
             </p>
           </Link>
           <button
-            aria-label="Continue with google"
             role="button"
             onClick={googleSignIn}
             className="hover:bg-blue-gray-50 transition duration-200 ease-in  py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10"
@@ -56,7 +54,6 @@ const SignIn = () => {
             </p>
           </button>
           <button
-            aria-label="Continue with twitter"
             role="button"
             className="hover:bg-blue-gray-50 transition duration-200 ease-in py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-4"
           >
@@ -81,7 +78,6 @@ const SignIn = () => {
                 Email
               </lable>
               <input
-                aria-label="enter email adress"
                 {...register("email")}
                 role="input"
                 type="email"
@@ -94,7 +90,6 @@ const SignIn = () => {
               </lable>
               <div className="relative flex items-center justify-center">
                 <input
-                  aria-label="enter Password"
                   {...register("password")}
                   role="input"
                   type="password"
@@ -106,7 +101,6 @@ const SignIn = () => {
             <div className="mt-8">
               <Button
                 role="button"
-                aria-label="create my account"
                 className="focus:ring-2 focus:ring-offset-2  text-sm font-semibold leading-none text-white focus:outline-none  border rounded  py-4 w-full"
               >
                 Login

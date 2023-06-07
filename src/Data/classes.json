@@ -1,0 +1,86 @@
+[
+  {
+    "image": "https://img.freepik.com/free-photo/studio-portrait-bearded-brutal-karate-fighter-dressed-white-kimono-grey-background_613910-1890.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "name": "John Smith",
+    "email": "john.smith@example.com",
+    "classes": [
+      {
+        "image": "class1.jpg",
+        "name": "Karate Basics",
+        "description": "This class focuses on teaching the fundamental techniques and principles of karate. Students will learn basic stances, punches, kicks, and blocks while developing strength, flexibility, and coordination.",
+        "availableSeats": 10,
+        "price": "50"
+      }
+    ]
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/young-woman-practicing-taekwondo-gymnasium_23-2150207131.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "name": "Emily Davis",
+    "email": "emily.davis@example.com",
+    "classes": [
+      {
+        "image": "class3.jpg",
+        "name": "Self-Defense for Women",
+        "description": "Designed specifically for women, this class focuses on practical self-defense techniques, situational awareness, and assertiveness training. Gain confidence and learn how to protect yourself in various scenarios.",
+        "availableSeats": 15,
+        "price": "55"
+      }
+    ]
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/shaved-head-karate-fighter-sits-tatami-gym_613910-13403.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "name": "Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "classes": [
+      {
+        "image": "class5.jpg",
+        "name": "Sparring Techniques",
+        "description": "This class focuses on the art of sparring and controlled combat. Students will practice partner drills, timing, distance control, and strategy to enhance their competitive skills in a safe and controlled environment.",
+        "availableSeats": 6,
+        "price": "70"
+      }
+    ]
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/happy-female-fighter-posing-medium-shot_23-2148446177.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "name": "Sophia Lee",
+    "email": "sophia.lee@example.com",
+    "classes": [
+      {
+        "image": "class4.jpg",
+        "name": "Kids Karate",
+        "description": "An engaging and fun-filled class for children, where they will learn basic karate skills, coordination exercises, and self-discipline. Our experienced instructors ensure a safe and enjoyable environment for all kids.",
+        "availableSeats": 12,
+        "price": "45"
+      }
+    ]
+  },
+  {
+    "image": "instructor5.jpg",
+    "name": "David Anderson",
+    "email": "david.anderson@example.com",
+    "classes": [
+      {
+        "image": "class6.jpg",
+        "name": "Tai Chi for Beginners",
+        "description": "Experience the flowing movements and meditation of Tai Chi in this introductory class. Suitable for all ages and fitness levels, Tai Chi promotes relaxation, balance, and inner peace.",
+        "availableSeats": 20,
+        "price": "40"
+      }
+    ]
+  },
+  {
+    "image": "instructor6.jpg",
+    "name": "Olivia Wilson",
+    "email": "olivia.wilson@example.com",
+    "classes": [
+      {
+        "image": "class2.jpg",
+        "name": "Advanced Techniques",
+        "description": "Take your karate skills to the next level with this advanced class. Students will learn intricate combinations, advanced forms, and specialized techniques to enhance their martial arts proficiency.",
+        "availableSeats": 8,
+        "price": "60"
+      }
+    ]
+  }
+]

@@ -16,8 +16,11 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log("data:", data);
     const { email, name, photoURL, password } = data;
-    createUser(email, password).then((data) => console.log(data));
-    updateInformation(name, photoURL);
+    createUser(email, password)
+      .then((resutl) => {
+        updateInformation(name, photoURL);
+      })
+      .catch((error) => console.log("Login Falied"));
   };
   return (
     <div className="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const NavBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [openNav, setOpenNav] = useState(false);
 
   useEffect(() => {
@@ -31,9 +31,7 @@ const NavBar = () => {
           color="blue-gray"
           className="p-1 font-normal"
         >
-          <a href="#" className="flex items-center">
-            Home
-          </a>
+          <span className="flex items-center">Home</span>
         </Typography>
       </Link>
       <Typography
@@ -42,9 +40,7 @@ const NavBar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Instructors
-        </a>
+        <span className="flex items-center">Instructors</span>
       </Typography>
       <Typography
         as="li"
@@ -52,9 +48,7 @@ const NavBar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Classes
-        </a>
+        <span className="flex items-center">Classes</span>
       </Typography>
       <Typography
         as="li"
@@ -62,16 +56,14 @@ const NavBar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Dashboard
-        </a>
+        <span className="flex items-center">Dashboard</span>
       </Typography>
     </ul>
   );
 
   return (
     <div>
-      <Navbar className="mx-auto max-w-screen-2xl py-2 px-4 lg:px-8 lg:py-4">
+      <Navbar className="mx-auto rounded-none max-w-screen-2xl py-2 px-4 lg:px-8 lg:py-4">
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
@@ -86,11 +78,12 @@ const NavBar = () => {
             {/* TODO: logout isn't showing */}
             {user ? (
               <Button
+                onClick={logOut()}
                 variant="gradient"
                 size="sm"
                 className="hidden lg:inline-block"
               >
-                <span>Login</span>
+                <span>Logout</span>
               </Button>
             ) : (
               <Button
@@ -98,7 +91,7 @@ const NavBar = () => {
                 size="sm"
                 className="hidden lg:inline-block"
               >
-                <span>Logout</span>
+                <span>Login</span>
               </Button>
             )}
           </Link>
@@ -140,14 +133,14 @@ const NavBar = () => {
             )}
           </IconButton>
         </div>
-        <MobileNav open={openNav}>
+        {/* <MobileNav open={openNav}>
           <div className="container mx-auto">
             {navList}
             <Button variant="gradient" size="sm" fullWidth className="mb-2">
               <span>Login</span>
             </Button>
           </div>
-        </MobileNav>
+        </MobileNav> */}
       </Navbar>
     </div>
   );
