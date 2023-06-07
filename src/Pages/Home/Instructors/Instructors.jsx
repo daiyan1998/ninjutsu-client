@@ -1,6 +1,6 @@
 import useData from "../../../Hooks/useData";
 import Heading from "../../Shared/Heading/Heading";
-import InstructorCard from "./InstructorCard";
+import InstructorCard from "../../../Components/InstructorCard";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";

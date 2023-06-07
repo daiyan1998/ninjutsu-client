@@ -34,22 +34,26 @@ const NavBar = () => {
           <span className="flex items-center">Home</span>
         </Typography>
       </Link>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <span className="flex items-center">Instructors</span>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <span className="flex items-center">Classes</span>
-      </Typography>
+      <Link to={"/instructors"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <span className="flex items-center">Instructors</span>
+        </Typography>
+      </Link>
+      <Link to={"/classes"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <span className="flex items-center">Classes</span>
+        </Typography>
+      </Link>
       <Typography
         as="li"
         variant="small"
@@ -133,14 +137,14 @@ const NavBar = () => {
             )}
           </IconButton>
         </div>
-        {/* <MobileNav open={openNav}>
+        <MobileNav open={openNav}>
           <div className="container mx-auto">
             {navList}
             <Button variant="gradient" size="sm" fullWidth className="mb-2">
               <span>Login</span>
             </Button>
           </div>
-        </MobileNav> */}
+        </MobileNav>
       </Navbar>
     </div>
   );
