@@ -9,8 +9,13 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import { BsCurrencyDollar, BsFillPeopleFill } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 
-const ClassCard = ({ data }) => {
-  const { name: className, price, availableSeats, image } = data.classes[0];
+const ClassCard = ({ instructor }) => {
+  const {
+    name: className,
+    price,
+    availableSeats,
+    image,
+  } = instructor.classes[0];
   return (
     <div className=" bg-white px-6 pt-6 pb-2 my-10 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
       <div className="relative">
@@ -24,7 +29,7 @@ const ClassCard = ({ data }) => {
           <span>
             <FaChalkboardTeacher className="text-xl text-light-blue-600"></FaChalkboardTeacher>
           </span>
-          <p>Instrustor : {data.name}</p>
+          <p>Instrustor : {instructor.name}</p>
         </div>
         <div className="flex gap-3 items-center">
           <span>
@@ -39,7 +44,7 @@ const ClassCard = ({ data }) => {
           <p>Price : ${price}</p>
         </div>
         <Button className="mt-4 text-xl w-full  rounded-xl shadow-lg">
-          Buy Lesson
+          Sellect
         </Button>
       </div>
     </div>

@@ -10,15 +10,11 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
 import Heading from "../../Shared/Heading/Heading";
+import useData from "../../../Hooks/useData";
 
 const Classes = () => {
-  const [data, setData] = useState([]);
+  const { instructors } = useData;
 
-  useEffect(() => {
-    fetch("http://localhost:5000/instructors")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
   return (
     <>
       <Heading
@@ -35,9 +31,12 @@ const Classes = () => {
           modules={[Pagination]}
           className="mySwiper h-full w-full"
         >
-          {data.map((data) => (
+          {instructors.map((instructor) => (
             <SwiperSlide>
-              <ClassCard key={data._id} data={data}></ClassCard>
+              <ClassCard
+                key={instructor._id}
+                instructor={instructor}
+              ></ClassCard>
             </SwiperSlide>
           ))}
         </Swiper>
