@@ -2,7 +2,7 @@ import { Carousel, Typography, Button } from "@material-tailwind/react";
 
 const Banner = () => {
   return (
-    <Carousel className="rounded-xl h-screen">
+    <Carousel className="rounded-xl h-screen my-10">
       {/* num 1 */}
       <div className="relative h-full w-full">
         <img

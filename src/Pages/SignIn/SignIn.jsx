@@ -5,108 +5,84 @@ import { BsTwitter } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
-import { Button } from "@material-tailwind/react";
+import { Result } from "postcss";
+import {} from "react-icons/fc";
+import {
+  Card,
+  Input,
+  Checkbox,
+  Button,
+  Typography,
+} from "@material-tailwind/react";
 const SignIn = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, signIn } = useContext(AuthContext);
   // NAME: React Hook
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    signIn(data.email, data.password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
-    <div className="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">
+    <div className="h-screen bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">
       <div className="flex flex-col items-center justify-center">
         <img className="h-28" src={logo} alt="" />
         <div className="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-5">
-          <p
-            tabIndex={0}
-            role="heading"
-            aria-label="Login to your account"
-            className="text-2xl font-extrabold leading-6 text-gray-800"
+          <Card
+            color=""
+            className="flex items-center justify-center"
+            shadow={false}
           >
-            Login to your account
-          </p>
-          <Link to={"/signup"}>
-            <p className="text-sm mt-4 font-medium leading-none text-gray-500">
-              Dont have account?{" "}
-              <span
-                tabIndex={0}
-                role="link"
-                className="font-semibold text-teal-500 leading-none underline cursor-pointer"
-              >
-                {" "}
-                Sign up here
-              </span>
-            </p>
-          </Link>
-          <button
-            role="button"
-            onClick={googleSignIn}
-            className="hover:bg-blue-gray-50 transition duration-200 ease-in  py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10"
-          >
-            <FcGoogle className="text-xl"></FcGoogle>
-            <p className="text-base font-medium ml-4 text-gray-700">
-              Continue with Google
-            </p>
-          </button>
-          <button
-            role="button"
-            className="hover:bg-blue-gray-50 transition duration-200 ease-in py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-4"
-          >
-            <BsTwitter className="text-xl text-cyan-500"></BsTwitter>
-            <p className="text-base font-medium ml-4 text-gray-700">
-              Continue with Twitter
-            </p>
-          </button>
-
-          {/* NAME: Form */}
-
-          <form onSubmit={handleSubmit(onSubmit)} action="">
-            <div className="w-full flex items-center justify-between py-5">
-              <hr className="w-full bg-gray-400" />
-              <p className="text-base font-medium leading-4 px-2.5 text-gray-400">
-                OR
-              </p>
-              <hr className="w-full bg-gray-400  " />
-            </div>
-            <div>
-              <lable className="text-sm font-medium leading-none text-gray-800">
-                Email
-              </lable>
-              <input
-                {...register("email")}
-                role="input"
-                type="email"
-                className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
-              />
-            </div>
-            <div className="mt-6  w-full">
-              <lable className="text-sm font-medium leading-none text-gray-800">
-                Password
-              </lable>
-              <div className="relative flex items-center justify-center">
-                <input
-                  {...register("password")}
-                  role="input"
-                  type="password"
-                  className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+            <Typography variant="h4" color="blue-gray">
+              Sign In
+            </Typography>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="mt-8 mb- bg-gray-100 p-5 rounded w-80 max-w-screen-lg sm:w-96"
+            >
+              <div className="mb-4 flex flex-col gap-6">
+                <Input
+                  size="lg"
+                  label="Email"
+                  {...register("email", { required: true })}
                 />
-                <div className="absolute right-0 mt-2 mr-3 cursor-pointer"></div>
+                <Input
+                  type="password"
+                  size="lg"
+                  label="Password"
+                  {...register("password", { required: true })}
+                />
               </div>
-            </div>
-            <div className="mt-8">
-              <Button
-                role="button"
-                className="focus:ring-2 focus:ring-offset-2  text-sm font-semibold leading-none text-white focus:outline-none  border rounded  py-4 w-full"
-              >
+              <Button className="mt-6" fullWidth>
                 Login
               </Button>
-            </div>
-          </form>
+              <Button
+                onClick={googleSignIn}
+                className="flex mt-2 justify-center items-center gap-3"
+                variant="outlined"
+                fullWidth
+              >
+                <FcGoogle className="text-xl"></FcGoogle>
+                Continue with Google
+              </Button>
+              <Typography color="gray" className="mt-4 text-center font-normal">
+                Don't have an account?{" "}
+                <Link
+                  to={"/signup"}
+                  className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+                >
+                  Sign Up
+                </Link>
+              </Typography>
+            </form>
+          </Card>
         </div>
       </div>
     </div>

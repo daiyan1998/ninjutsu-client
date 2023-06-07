@@ -19,7 +19,6 @@ const Classes = () => {
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
-  console.log(data);
   return (
     <>
       <Heading
@@ -38,7 +37,7 @@ const Classes = () => {
         >
           {data.map((data) => (
             <SwiperSlide>
-              <ClassCard data={data}></ClassCard>
+              <ClassCard key={data._id} data={data}></ClassCard>
             </SwiperSlide>
           ))}
         </Swiper>
