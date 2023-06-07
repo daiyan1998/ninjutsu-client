@@ -6,7 +6,7 @@ const Banner = () => {
       {/* num 1 */}
       <div className="relative h-full w-full">
         <img
-          src="https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2FyYXRlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+          src="https://images.pexels.com/photos/7990087/pexels-photo-7990087.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt="image 1"
           className="h-full w-full object-cover"
         />
@@ -40,7 +40,7 @@ const Banner = () => {
       {/* num 2 */}
       <div className="relative h-full w-full">
         <img
-          src="https://images.unsplash.com/photo-1526889588514-2e695856df85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8a2FyYXRlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          src="https://images.pexels.com/photos/6253298/pexels-photo-6253298.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt="image 1"
           className="h-full w-full object-cover"
         />
@@ -74,7 +74,7 @@ const Banner = () => {
       {/* num 3 */}
       <div className="relative h-full w-full">
         <img
-          src="https://images.unsplash.com/photo-1514050566906-8d077bae7046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8a2FyYXRlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          src="https://images.pexels.com/photos/690598/pexels-photo-690598.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt="image 1"
           className="h-full w-full object-cover"
         />
