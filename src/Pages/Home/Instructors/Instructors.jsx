@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import "../../../style.css";
 
 // import required modules
-import { EffectCards, FreeMode, Pagination } from "swiper";
+import { FreeMode, Pagination } from "swiper";
 
 const Instructors = () => {
   const [instructors] = useData();
@@ -46,7 +46,7 @@ const Instructors = () => {
         className="mySwiper"
       >
         {instructors.map((instructor) => (
-          <SwiperSlide>
+          <SwiperSlide key={instructor._id}>
             <InstructorCard instructor={instructor}></InstructorCard>
           </SwiperSlide>
         ))}

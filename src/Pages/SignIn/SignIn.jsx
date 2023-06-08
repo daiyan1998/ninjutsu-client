@@ -1,21 +1,14 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import logo from "../../assets/shuriken.png";
 import { FcGoogle } from "react-icons/fc";
-import { BsTwitter } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
-import { Result } from "postcss";
 import {} from "react-icons/fc";
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, Input, Button, Typography } from "@material-tailwind/react";
 const SignIn = () => {
   const { googleSignIn, signIn } = useContext(AuthContext);
+  const from = location.state?.from?.pathname || "/";
   // NAME: React Hook
   const {
     register,
@@ -73,7 +66,7 @@ const SignIn = () => {
                 Continue with Google
               </Button>
               <Typography color="gray" className="mt-4 text-center font-normal">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link
                   to={"/signup"}
                   className="font-medium text-blue-500 transition-colors hover:text-blue-700"

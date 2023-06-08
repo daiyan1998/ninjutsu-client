@@ -1,20 +1,20 @@
 import { useQuery } from "react-query";
 import useFetchLink from "../utils/useFetchLink";
 
-const useData = () => {
+const useSelectedClass = () => {
   const url = useFetchLink();
   const {
-    data: instructors = [],
+    data: selectedClasses = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["instructors"],
+    queryKey: ["selectedClasses"],
     queryFn: async () => {
-      const res = await fetch(`${url}/instructors`);
+      const res = await fetch(`${url}/selectedClasses`);
       return res.json();
     },
   });
-  return [instructors, isLoading, refetch];
+  return [selectedClasses, isLoading, refetch];
 };
 
-export default useData;
+export default useSelectedClass;
