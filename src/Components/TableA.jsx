@@ -7,36 +7,35 @@ import {
 } from "@material-tailwind/react";
 import { AiFillDelete } from "react-icons/ai";
 import { MdPayment } from "react-icons/md";
-const TableA = ({ data }) => {
+import Swal from "sweetalert2";
+const TableA = ({ data, refetch }) => {
+  const deleteHandler = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/selectedClasses/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
+
   const TABLE_HEAD = ["Serial", "Image", "Class Name", "Price", "Action"];
 
-  const TABLE_ROWS = [
-    {
-      name: "John Michael",
-      job: "Manager",
-      date: "23/04/18",
-    },
-    {
-      name: "Alexa Liras",
-      job: "Developer",
-      date: "23/04/18",
-    },
-    {
-      name: "Laurent Perrier",
-      job: "Executive",
-      date: "19/09/17",
-    },
-    {
-      name: "Michael Levi",
-      job: "Developer",
-      date: "24/12/08",
-    },
-    {
-      name: "Richard Gran",
-      job: "Manager",
-      date: "04/10/21",
-    },
-  ];
   return (
     <Card className="overflow-scroll h-full w-full mt-8">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -72,8 +71,8 @@ const TableA = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ image, price, className }, index) => {
-            const isLast = index === TABLE_ROWS.length - 1;
+          {data.map(({ image, price, className, _id }, index) => {
+            const isLast = index === data.length - 1;
             const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
             return (
@@ -123,7 +122,10 @@ const TableA = ({ data }) => {
                     className="font-medium"
                   >
                     <ButtonGroup variant="outlined">
-                      <Button className="flex items-center gap-1">
+                      <Button
+                        onClick={() => deleteHandler(_id)}
+                        className="flex items-center gap-1"
+                      >
                         <AiFillDelete className="text-2xl"></AiFillDelete>
                         <span>Delete</span>
                       </Button>

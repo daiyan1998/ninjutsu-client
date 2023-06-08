@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import ClassCard from "../../../Components/ClassCard";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,7 +13,6 @@ import useData from "../../../Hooks/useData";
 
 const Classes = () => {
   const [instructors] = useData();
-  console.log("instructors:", instructors);
 
   return (
     <div className="my-32">
@@ -45,11 +43,8 @@ const Classes = () => {
           className="mySwiper h-full w-full"
         >
           {instructors?.map((instructor) => (
-            <SwiperSlide>
-              <ClassCard
-                key={instructor._id}
-                instructor={instructor}
-              ></ClassCard>
+            <SwiperSlide key={instructor._id}>
+              <ClassCard instructor={instructor}></ClassCard>
             </SwiperSlide>
           ))}
         </Swiper>

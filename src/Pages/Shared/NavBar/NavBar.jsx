@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   IconButton,
-  Collapse,
 } from "@material-tailwind/react";
 import logo from "../../../assets/shuriken.png";
 import { Link } from "react-router-dom";
@@ -142,9 +141,23 @@ const NavBar = () => {
         <MobileNav open={openNav}>
           <div className="container mx-auto">
             {navList}
-            <Button variant="gradient" size="sm" fullWidth className="mb-2">
-              <span>Login</span>
-            </Button>
+            {user ? (
+              <Button
+                onClick={logOut}
+                variant="gradient"
+                size="sm"
+                fullWidth
+                className="mb-2"
+              >
+                <span>Logout</span>
+              </Button>
+            ) : (
+              <Link to={"signin"}>
+                <Button variant="gradient" size="sm" fullWidth className="mb-2">
+                  <span>Login</span>
+                </Button>
+              </Link>
+            )}
           </div>
         </MobileNav>
       </Navbar>

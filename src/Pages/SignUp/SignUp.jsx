@@ -25,11 +25,11 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log("data:", data);
     const { email, name, photoURL, password } = data;
-    // createUser(email, password)
-    //   .then((result) => {
-    //     updateInformation(name, photoURL);
-    //   })
-    //   .catch((error) => console.log(error));
+    createUser(email, password)
+      .then(() => {
+        updateInformation(name, photoURL);
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">

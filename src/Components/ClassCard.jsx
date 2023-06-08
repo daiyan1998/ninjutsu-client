@@ -21,9 +21,9 @@ const ClassCard = ({ instructor }) => {
       className,
       price,
       image,
-      email: user.email,
+      email: user?.email,
     };
-    if (user && user.email) {
+    if (user && user?.email) {
       fetch(`${url}/selectedClasses`, {
         method: "POST",
         headers: { "content-type": "application/json" },

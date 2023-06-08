@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import logo from "../../assets/shuriken.png";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { AiOutlineEye } from "react-icons/ai";
 import {} from "react-icons/fc";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 const SignIn = () => {
   const { googleSignIn, signIn } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
+  const [showPass, setShowPass] = useState(false);
   // NAME: React Hook
   const {
     register,
@@ -36,10 +38,7 @@ const SignIn = () => {
             <Typography variant="h4" color="blue-gray">
               Sign In
             </Typography>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="mt-8 mb- bg-gray-100 p-5 rounded w-80 max-w-screen-lg sm:w-96"
-            >
+            <form className="mt-8 mb- bg-gray-100 p-5 rounded w-80 max-w-screen-lg sm:w-96">
               <div className="mb-4 flex flex-col gap-6">
                 <Input
                   size="lg"
@@ -47,13 +46,23 @@ const SignIn = () => {
                   {...register("email", { required: true })}
                 />
                 <Input
-                  type="password"
+                  type={showPass ? "text" : "password"}
                   size="lg"
                   label="Password"
+                  icon={
+                    <AiOutlineEye
+                      onClick={() => setShowPass(!showPass)}
+                      className="cursor-pointer text-xl"
+                    />
+                  }
                   {...register("password", { required: true })}
                 />
               </div>
-              <Button className="mt-6" fullWidth>
+              <Button
+                onClick={handleSubmit(onSubmit)}
+                className="mt-6"
+                fullWidth
+              >
                 Login
               </Button>
               <Button

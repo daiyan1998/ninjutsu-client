@@ -2,10 +2,10 @@ import TableA from "../../../Components/TableA";
 import useSelectedClass from "../../../Hooks/useSelectedClass";
 
 const SelectedClass = () => {
-  const [selectedClasses] = useSelectedClass();
+  const [selectedClasses, refetch] = useSelectedClass();
   return (
     <>
-      <TableA data={selectedClasses}></TableA>
+      <TableA data={selectedClasses} refetch={refetch}></TableA>
     </>
   );
 };
