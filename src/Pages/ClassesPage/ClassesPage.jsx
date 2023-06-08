@@ -1,4 +1,3 @@
-import React from "react";
 import ClassCard from "../../Components/ClassCard";
 import useData from "../../Hooks/useData";
 
@@ -21,7 +20,10 @@ const ClassesPage = () => {
           {/* <div className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"> */}
           <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
             {instructors.map((instructor) => (
-              <ClassCard instructor={instructor}></ClassCard>
+              <ClassCard
+                key={instructor._id}
+                instructor={instructor}
+              ></ClassCard>
             ))}
           </div>
         </div>

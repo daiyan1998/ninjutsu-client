@@ -17,7 +17,7 @@ const Classes = () => {
   console.log("instructors:", instructors);
 
   return (
-    <>
+    <div className="my-32">
       <Heading
         heading={"POPULAR TRAINING PROGRAMS"}
         subHeading={"Choose the Class"}
@@ -54,7 +54,7 @@ const Classes = () => {
           ))}
         </Swiper>
       </div>
-    </>
+    </div>
   );
 };
 

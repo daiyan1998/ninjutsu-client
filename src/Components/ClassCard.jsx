@@ -1,16 +1,8 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { Button } from "@material-tailwind/react";
 import { BsCurrencyDollar, BsFillPeopleFill } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 
 const ClassCard = ({ instructor }) => {
-  console.log("instructor:", instructor);
   const {
     name: className,
     price,

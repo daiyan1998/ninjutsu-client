@@ -54,14 +54,16 @@ const NavBar = () => {
           <span className="flex items-center">Classes</span>
         </Typography>
       </Link>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <span className="flex items-center">Dashboard</span>
-      </Typography>
+      <Link to={"/dashboard"}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-normal"
+        >
+          <span className="flex items-center">Dashboard</span>
+        </Typography>
+      </Link>
     </ul>
   );
 
@@ -82,7 +84,7 @@ const NavBar = () => {
             {/* TODO: logout isn't showing */}
             {user ? (
               <Button
-                onClick={logOut()}
+                onClick={logOut}
                 variant="gradient"
                 size="sm"
                 className="hidden lg:inline-block"

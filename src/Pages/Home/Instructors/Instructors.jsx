@@ -17,7 +17,7 @@ import { EffectCards, FreeMode, Pagination } from "swiper";
 const Instructors = () => {
   const [instructors] = useData();
   return (
-    <div className="mt-8">
+    <div className="my-32">
       <Heading
         heading={"OUR POPULAR INSTRUCTORS"}
         subHeading={"Staff"}
