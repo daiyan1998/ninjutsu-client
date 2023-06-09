@@ -7,7 +7,10 @@ import InstructorsPage from "../Pages/InstructorsPage/InstructorsPage";
 import ClassesPage from "../Pages/ClassesPage/ClassesPage";
 import Error from "../Pages/Error/Error";
 import Dashboard from "../Layouts/Dashboard";
-import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
+import SelectedClass from "../Pages/Dashboard/studentDashboard/SelectedClass/SelectedClass";
+import Payment from "../Pages/Dashboard/studentDashboard/Payment/Payment";
+import ManageClasses from "../Pages/Dashboard/AdminDashboard/ManageClasses/ManageClasses";
+import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -44,9 +47,24 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      // NAME: Admin Dashboard
+      {
+        path: "manageClasses",
+        element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+
+      // NAME: Student Dashboard
       {
         path: "selectedClass",
         element: <SelectedClass></SelectedClass>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
     ],
   },

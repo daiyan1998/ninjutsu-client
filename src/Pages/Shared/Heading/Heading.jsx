@@ -1,5 +1,3 @@
-import React from "react";
-
 const Heading = ({ heading, subHeading }) => {
   return (
     <div className="text-center my-8">

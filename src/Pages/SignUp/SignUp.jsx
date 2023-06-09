@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import logo from "../../assets/shuriken.png";
 import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../Providers/AuthProvider";
 import {
   Card,
@@ -11,10 +13,14 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import useFetchLink from "../../utils/useFetchLink";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, updateInformation, googleSignIn } =
     useContext(AuthContext);
+  const url = useFetchLink();
+  const navigate = useNavigate();
   // NAME: React Hook
   const {
     register,
@@ -27,7 +33,29 @@ const SignUp = () => {
     const { email, name, photoURL, password } = data;
     createUser(email, password)
       .then(() => {
-        updateInformation(name, photoURL);
+        updateInformation(name, photoURL).then(() => {
+          const savedUser = { email: email, name: name };
+          fetch(`${url}/users`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "User Created Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
+        });
       })
       .catch((error) => console.log(error));
   };

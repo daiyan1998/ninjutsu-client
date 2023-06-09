@@ -2,46 +2,50 @@ import {
   Drawer,
   Button,
   Typography,
-  IconButton,
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
 } from "@material-tailwind/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  HomeIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-} from "@heroicons/react/24/solid";
+// import { XMarkIcon } from "@heroicons/react/24/outline";
+import { HomeIcon } from "@heroicons/react/24/solid";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { SiGoogleclassroom } from "react-icons/si";
 
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import StudentSideMenu from "../Pages/Dashboard/studentDashboard/studentSideMenu/StudentSideMenu";
+import AdminSideMenu from "../Pages/Dashboard/AdminDashboard/AdminSideMenu/AdminSideMenu";
 
 const Dashboard = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const openDrawer = () => setOpen(true);
-  const closeDrawer = () => setOpen(false);
+  const isAdmin = true;
+  // const closeDrawer = () => setOpen(false);
 
   return (
     <>
       <div>
-        <Button onClick={openDrawer}>Open Drawer</Button>
+        <Button className={open ? "hidden" : "block"} onClick={openDrawer}>
+          Open Drawer
+        </Button>
         <Outlet></Outlet>
       </div>
-      <Drawer open={open} onClose={closeDrawer}>
+      <Drawer open={open} overlay={false}>
         <div className="mb-2 flex items-center justify-between p-4">
           <Typography variant="h5" color="blue-gray">
             Ninjutsu
           </Typography>
-          <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+          {/* <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
             <XMarkIcon strokeWidth={2} className="h-5 w-5" />
-          </IconButton>
+          </IconButton> */}
         </div>
+        {isAdmin ? (
+          <AdminSideMenu></AdminSideMenu>
+        ) : (
+          <StudentSideMenu></StudentSideMenu>
+        )}
+        <hr className="border-3 border-gray-500 hover:border-purple-500 drop-shadow-xl" />
+        {/* NAME: Common */}
         <List>
           <Link to={"/"}>
             <ListItem>
@@ -51,47 +55,22 @@ const Dashboard = () => {
               Home
             </ListItem>
           </Link>
-          <ListItem>
-            <ListItemPrefix>
-              <ShoppingBagIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            My Cart
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <InboxIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Manage Classes
-            <ListItemSuffix>
-              <Chip
-                value="14"
-                size="sm"
-                variant="ghost"
-                color="blue-gray"
-                className="rounded-full"
-              />
-            </ListItemSuffix>
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <UserCircleIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Manage Users
-          </ListItem>
-          <Link to={"selectedClass"} onClick={closeDrawer}>
+          <Link to={"/classes"}>
             <ListItem>
               <ListItemPrefix>
-                <Cog6ToothIcon className="h-5 w-5" />
+                <SiGoogleclassroom className="h-5 w-5" />
               </ListItemPrefix>
-              Selected Classes
+              Classes
             </ListItem>
           </Link>
-          <ListItem>
-            <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Log Out
-          </ListItem>
+          <Link to={"/instructors"}>
+            <ListItem>
+              <ListItemPrefix>
+                <FaChalkboardTeacher className="h-5 w-5" />
+              </ListItemPrefix>
+              Instructors
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
     </>

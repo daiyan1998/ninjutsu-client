@@ -1,5 +1,5 @@
-import TableA from "../../../Components/TableA";
-import useSelectedClass from "../../../Hooks/useSelectedClass";
+import useSelectedClass from "../../../../Hooks/useSelectedClass";
+import TableA from "../../../../Components/TableA";
 
 const SelectedClass = () => {
   const [selectedClasses, refetch] = useSelectedClass();

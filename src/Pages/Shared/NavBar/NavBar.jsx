@@ -1,14 +1,15 @@
-import { useState, useEffect, useContext } from "react";
 import {
-  Navbar,
-  MobileNav,
-  Typography,
+  Avatar,
   Button,
   IconButton,
+  MobileNav,
+  Navbar,
+  Typography,
 } from "@material-tailwind/react";
-import logo from "../../../assets/shuriken.png";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import logo from "../../../assets/shuriken.png";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -79,8 +80,17 @@ const NavBar = () => {
             <span className="font-semibold">NinJutsu</span>
           </Typography>
           <div className="hidden lg:block">{navList}</div>
-          <Link to={"signin"}>
-            {/* TODO: logout isn't showing */}
+          <div className="flex gap-2 items-center">
+            <Avatar
+              src={
+                user?.photoURL
+                  ? user.photoURL
+                  : "https://cdn.reviewwave.com/site/img/avatars/no-profile-picture.png"
+              }
+              alt="avatar"
+              withBorder={true}
+              className="p-0.5"
+            />
             {user ? (
               <Button
                 onClick={logOut}
@@ -91,15 +101,17 @@ const NavBar = () => {
                 <span>Logout</span>
               </Button>
             ) : (
-              <Button
-                variant="gradient"
-                size="sm"
-                className="hidden lg:inline-block"
-              >
-                <span>Login</span>
-              </Button>
+              <Link to={"signin"}>
+                <Button
+                  variant="gradient"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
+                  <span>Login</span>
+                </Button>
+              </Link>
             )}
-          </Link>
+          </div>
           <IconButton
             variant="text"
             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
