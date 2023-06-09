@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
 import logo from "../../assets/shuriken.png";
-import { FcGoogle } from "react-icons/fc";
+import {} from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { AiOutlineEye } from "react-icons/ai";
 import {} from "react-icons/fc";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 const SignIn = () => {
-  const { googleSignIn, signIn } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
   const [showPass, setShowPass] = useState(false);
   // NAME: React Hook
@@ -65,15 +66,7 @@ const SignIn = () => {
               >
                 Login
               </Button>
-              <Button
-                onClick={googleSignIn}
-                className="flex mt-2 justify-center items-center gap-3"
-                variant="outlined"
-                fullWidth
-              >
-                <FcGoogle className="text-xl"></FcGoogle>
-                Continue with Google
-              </Button>
+              <SocialLogin></SocialLogin>
               <Typography color="gray" className="mt-4 text-center font-normal">
                 Don&apos;t have an account?{" "}
                 <Link

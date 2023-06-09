@@ -6,7 +6,7 @@ const AdminSideMenu = () => {
   return (
     <>
       <List>
-        <Link to={"/"}>
+        <Link>
           <ListItem>
             <ListItemPrefix>
               <HomeIcon className="h-5 w-5" />

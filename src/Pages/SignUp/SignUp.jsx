@@ -15,10 +15,10 @@ import {
 import { Link } from "react-router-dom";
 import useFetchLink from "../../utils/useFetchLink";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
-  const { createUser, updateInformation, googleSignIn } =
-    useContext(AuthContext);
+  const { createUser, updateInformation } = useContext(AuthContext);
   const url = useFetchLink();
   const navigate = useNavigate();
   // NAME: React Hook
@@ -143,15 +143,7 @@ const SignUp = () => {
               <Button type="submit" className="mt-6" fullWidth>
                 Register
               </Button>
-              <Button
-                onClick={googleSignIn}
-                className="flex mt-2 justify-center items-center gap-3"
-                variant="outlined"
-                fullWidth
-              >
-                <FcGoogle className="text-xl"></FcGoogle>
-                Continue with Google
-              </Button>
+              <SocialLogin></SocialLogin>
               <Typography color="gray" className="mt-4 text-center font-normal">
                 Already have an account?{" "}
                 <Link

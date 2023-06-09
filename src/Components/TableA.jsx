@@ -8,7 +8,8 @@ import {
 import { AiFillDelete } from "react-icons/ai";
 import { MdPayment } from "react-icons/md";
 import Swal from "sweetalert2";
-const TableA = ({ data, refetch }) => {
+
+const TableA = ({ datas, refetch, TABLE_HEAD }) => {
   const deleteHandler = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -33,8 +34,6 @@ const TableA = ({ data, refetch }) => {
       }
     });
   };
-
-  const TABLE_HEAD = ["Serial", "Image", "Class Name", "Price", "Action"];
 
   return (
     <Card className="overflow-scroll h-full w-full mt-8">
@@ -71,8 +70,8 @@ const TableA = ({ data, refetch }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ image, price, className, _id }, index) => {
-            const isLast = index === data.length - 1;
+          {datas.map(({ image, price, className, _id }, index) => {
+            const isLast = index === datas.length - 1;
             const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
             return (
