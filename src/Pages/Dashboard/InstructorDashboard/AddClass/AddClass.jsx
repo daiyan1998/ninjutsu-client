@@ -2,20 +2,34 @@ import { useForm } from "react-hook-form";
 import Heading from "../../../Shared/Heading/Heading";
 import { Card, Input, Button } from "@material-tailwind/react";
 import useAuth from "../../../../Hooks/useAuth";
+import useFetchLink from "../../../../utils/useFetchLink";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
   const { user } = useAuth();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const url = useFetchLink();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log(data, user.email);
+    fetch(`${url}/instructorClass`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Class Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
-  // TODO: user Email isn't showing in react hook form
   return (
     <div className="flex flex-col justify-center items-center gap-16">
       <Heading heading={"ADD YOUR CLASS"}></Heading>
@@ -44,6 +58,7 @@ const AddClass = () => {
             />
             <Input
               required
+              type="url"
               size="lg"
               label="Class Image URL"
               {...register("classImg")}

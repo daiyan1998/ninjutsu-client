@@ -8,8 +8,10 @@ import {
 import { AiFillDelete } from "react-icons/ai";
 import { MdPayment } from "react-icons/md";
 import Swal from "sweetalert2";
+import useFetchLink from "../utils/useFetchLink";
 
 const TableA = ({ datas, refetch, TABLE_HEAD }) => {
+  const url = useFetchLink();
   const deleteHandler = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -21,7 +23,7 @@ const TableA = ({ datas, refetch, TABLE_HEAD }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selectedClasses/${id}`, {
+        fetch(`${url}/selectedClasses/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

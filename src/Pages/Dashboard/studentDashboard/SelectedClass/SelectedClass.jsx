@@ -10,9 +10,11 @@ import {
 import { AiFillDelete } from "react-icons/ai";
 import { MdPayment } from "react-icons/md";
 import Swal from "sweetalert2";
+import useFetchLink from "../../../../utils/useFetchLink";
 
 const SelectedClass = () => {
   const [selectedClasses, refetch] = useSelectedClass();
+  const url = useFetchLink();
   // const [data] = useGetData("selectedClasses", "selectedClasses");
   // console.log("custom", data);
   const TABLE_HEAD = ["Serial", "Image", "Class Name", "Price", "Action"];
@@ -27,7 +29,7 @@ const SelectedClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selectedClasses/${id}`, {
+        fetch(`${url}/selectedClasses/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

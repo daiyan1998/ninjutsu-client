@@ -11,6 +11,7 @@ const useGetData = (path, qKey) => {
     queryKey: [`${qKey}`],
     queryFn: async () => {
       const res = await fetch(`${url}/${path}`);
+      console.log(res.json());
       return res.json();
     },
   });

@@ -22,8 +22,8 @@ const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const openDrawer = () => setOpen(true);
   // const isAdmin = true;
-  const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+  const [role] = useAdmin();
+  console.log("role", role);
   // const closeDrawer = () => setOpen(false);
 
   return (
@@ -43,9 +43,9 @@ const Dashboard = () => {
             <XMarkIcon strokeWidth={2} className="h-5 w-5" />
           </IconButton> */}
         </div>
-        {isAdmin == "admin" ? (
+        {role == "admin" ? (
           <AdminSideMenu></AdminSideMenu>
-        ) : isAdmin == "instructor" ? (
+        ) : role == "instructor" ? (
           <InstructorSideMenu></InstructorSideMenu>
         ) : (
           <StudentSideMenu></StudentSideMenu>

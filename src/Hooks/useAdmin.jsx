@@ -5,14 +5,15 @@ import axios from "axios";
 const useAdmin = () => {
   const url = useFetchLink();
   const { user } = useAuth();
-  const { data: isAdmin } = useQuery({
-    queryKey: ["isAdmin", user?.email],
+  const { data: role } = useQuery({
+    queryKey: ["role", user?.email],
     queryFn: async () => {
       const res = await axios.get(`${url}/users/admin/${user?.email}`);
-      return res.data.admin;
+      console.log({ res });
+      return res.data.role;
     },
   });
-  return [isAdmin];
+  return [role];
 };
 
 export default useAdmin;
