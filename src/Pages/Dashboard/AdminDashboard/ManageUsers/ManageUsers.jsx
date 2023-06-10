@@ -7,16 +7,11 @@ import {
 } from "@material-tailwind/react";
 import useFetchLink from "../../../../utils/useFetchLink";
 import { useQuery } from "react-query";
-import axios from "axios";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const url = useFetchLink();
-  const {
-    data: users = [],
-    isLoading,
-    refetch,
-  } = useQuery(["users"], async () => {
+  const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await fetch(`${url}/users`);
     return res.json();
   });
@@ -129,7 +124,7 @@ const ManageUsers = () => {
                         </Button>
                         <Button
                           onClick={() => handleAdmin(_id)}
-                          disabled={role === "Instructor" ? true : false}
+                          disabled={role === "instructor" ? true : false}
                           className="flex items-center gap-1"
                         >
                           <span>Instructor</span>

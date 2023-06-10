@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import logo from "../../assets/shuriken.png";
-import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 

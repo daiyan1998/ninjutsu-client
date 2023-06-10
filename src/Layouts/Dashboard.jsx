@@ -15,11 +15,15 @@ import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import StudentSideMenu from "../Pages/Dashboard/studentDashboard/studentSideMenu/StudentSideMenu";
 import AdminSideMenu from "../Pages/Dashboard/AdminDashboard/AdminSideMenu/AdminSideMenu";
+import useAdmin from "../Hooks/useAdmin";
+import InstructorSideMenu from "../Pages/Dashboard/InstructorDashboard/InstructorSideMenu/InstructorSideMenu";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const openDrawer = () => setOpen(true);
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
   // const closeDrawer = () => setOpen(false);
 
   return (
@@ -39,8 +43,10 @@ const Dashboard = () => {
             <XMarkIcon strokeWidth={2} className="h-5 w-5" />
           </IconButton> */}
         </div>
-        {isAdmin ? (
+        {isAdmin == "admin" ? (
           <AdminSideMenu></AdminSideMenu>
+        ) : isAdmin == "instructor" ? (
+          <InstructorSideMenu></InstructorSideMenu>
         ) : (
           <StudentSideMenu></StudentSideMenu>
         )}
