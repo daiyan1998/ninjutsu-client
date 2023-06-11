@@ -6,14 +6,16 @@ import {
   Chip,
   ButtonGroup,
 } from "@material-tailwind/react";
-import useInstructorClass from "../../../../Hooks/useInstructorClass";
 import useFetchLink from "../../../../utils/useFetchLink";
 import Swal from "sweetalert2";
 import FeedbackModal from "../../../../Components/FeedbackModal";
+import useGetData from "../../../../Hooks/useGetData";
 
 const ManageClasses = () => {
   const url = useFetchLink();
-  const [instructorClass, refetch] = useInstructorClass();
+  // const [instructorClass, refetch] = useInstructorClass();
+  const [data, , refetch] = useGetData("manageClass", "manageClass");
+  const instructorClass = data;
   const TABLE_HEAD = [
     "#",
     "Class Image",

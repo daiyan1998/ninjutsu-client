@@ -13,7 +13,7 @@ const SeeFeedback = () => {
 
   return (
     <div>
-      <p onClick={handleOpen}>See Feedback</p>
+      <Button onClick={handleOpen}>See Feedback</Button>
       <Dialog
         open={open}
         handler={handleOpen}

@@ -1,8 +1,10 @@
 import ClassCard from "../../Components/ClassCard";
-import useData from "../../Hooks/useData";
+import useGetData from "../../Hooks/useGetData";
 
 const ClassesPage = () => {
-  const [instructors] = useData();
+  const [data] = useGetData("instructorClass", "instructorClass");
+  const classes = data;
+  console.log({ classes });
   return (
     <div>
       <div className="container flex justify-center mx-auto pt-16">
@@ -19,11 +21,8 @@ const ClassesPage = () => {
         <div className="container mx-auto">
           {/* <div className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"> */}
           <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
-            {instructors.map((instructor) => (
-              <ClassCard
-                key={instructor._id}
-                instructor={instructor}
-              ></ClassCard>
+            {classes.map((class_) => (
+              <ClassCard key={class_._id} class_={class_}></ClassCard>
             ))}
           </div>
         </div>

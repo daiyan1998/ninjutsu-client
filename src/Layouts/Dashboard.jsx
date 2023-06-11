@@ -23,7 +23,6 @@ const Dashboard = () => {
   const openDrawer = () => setOpen(true);
   // const isAdmin = true;
   const [role] = useAdmin();
-  console.log("role", role);
   // const closeDrawer = () => setOpen(false);
 
   return (

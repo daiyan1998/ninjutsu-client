@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import useFetchLink from "../utils/useFetchLink";
+import axios from "axios";
 
 const useGetData = (path, qKey) => {
   const url = useFetchLink();
@@ -10,9 +11,8 @@ const useGetData = (path, qKey) => {
   } = useQuery({
     queryKey: [`${qKey}`],
     queryFn: async () => {
-      const res = await fetch(`${url}/${path}`);
-      console.log(res.json());
-      return res.json();
+      const res = await axios.get(`${url}/${path}`);
+      return res.data;
     },
   });
   return [data, isLoading, refetch];

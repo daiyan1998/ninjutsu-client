@@ -28,7 +28,6 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("data:", data);
     const { email, name, photoURL, password } = data;
     createUser(email, password)
       .then(() => {

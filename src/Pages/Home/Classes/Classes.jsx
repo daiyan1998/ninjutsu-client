@@ -9,10 +9,11 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
 import Heading from "../../Shared/Heading/Heading";
-import useData from "../../../Hooks/useData";
+import useGetData from "../../../Hooks/useGetData";
 
 const Classes = () => {
-  const [instructors] = useData();
+  const [data] = useGetData("instructorClass", "instructorClass");
+  const classes = data;
 
   return (
     <div className="my-32">
@@ -42,9 +43,9 @@ const Classes = () => {
           }}
           className="mySwiper h-full w-full"
         >
-          {instructors?.map((instructor) => (
-            <SwiperSlide key={instructor._id}>
-              <ClassCard instructor={instructor}></ClassCard>
+          {classes?.slice(0, 6).map((class_) => (
+            <SwiperSlide key={class_._id}>
+              <ClassCard class_={class_}></ClassCard>
             </SwiperSlide>
           ))}
         </Swiper>

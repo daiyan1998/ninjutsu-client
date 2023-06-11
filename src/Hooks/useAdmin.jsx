@@ -9,7 +9,6 @@ const useAdmin = () => {
     queryKey: ["role", user?.email],
     queryFn: async () => {
       const res = await axios.get(`${url}/users/admin/${user?.email}`);
-      console.log({ res });
       return res.data.role;
     },
   });

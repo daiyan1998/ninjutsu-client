@@ -25,7 +25,6 @@ const TABLE_HEAD = [
 
 const MyClasses = () => {
   const [instructorClass] = useInstructorClass();
-  console.log(instructorClass);
   return (
     <Card className="h-full w-full">
       <Heading heading={"Your Classes"}></Heading>
@@ -105,9 +104,7 @@ const MyClasses = () => {
                   </td>
                   <td>
                     {status === "denied" ? (
-                      <Button className="flex gap-1">
-                        <SeeFeedback></SeeFeedback>
-                      </Button>
+                      <SeeFeedback></SeeFeedback>
                     ) : (
                       <Button disabled={true}>No Feedback</Button>
                     )}

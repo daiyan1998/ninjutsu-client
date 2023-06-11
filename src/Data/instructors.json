@@ -1,0 +1,44 @@
+[
+  {
+    "image": "https://img.freepik.com/free-photo/studio-portrait-bearded-brutal-karate-fighter-dressed-white-kimono-grey-background_613910-1890.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "instructorName": "John Smith",
+    "instructorEmail": "john.smith@example.com",
+    "instructorStudents": 75,
+    "position": "Chief Instructor"
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/young-woman-practicing-taekwondo-gymnasium_23-2150207131.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "instructorName": "Emily Davis",
+    "instructorEmail": "emily.davis@example.com",
+    "instructorStudents": 50,
+    "position": "Assistant Instructor"
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/shaved-head-karate-fighter-sits-tatami-gym_613910-13403.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "instructorName": "Michael Johnson",
+    "instructorEmail": "michael.johnson@example.com",
+    "instructorStudents": 80,
+    "position": "Program Director"
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/happy-female-fighter-posing-medium-shot_23-2148446177.jpg?size=626&ext=jpg&ga=GA1.1.167912981.1683129991&semt=ais",
+    "instructorName": "Sophia Lee",
+    "instructorEmail": "sophia.lee@example.com",
+    "instructorStudents": 65,
+    "position": "Head Coach"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1554302242-40743152783a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGthcmF0ZSUyMGNvYWNofGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+    "instructorName": "David Anderson",
+    "instructorEmail": "david.anderson@example.com",
+    "instructorStudents": 25,
+    "position": "Belt Ranking Examiner"
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1606853852935-f9f5abd17ebc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGthcmF0ZSUyMGNvYWNofGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+    "instructorName": "Olivia Wilson",
+    "instructorEmail": "olivia.wilson@example.com",
+    "totalStudent": 45,
+    "position": "Fitness Trainer"
+  }
+]

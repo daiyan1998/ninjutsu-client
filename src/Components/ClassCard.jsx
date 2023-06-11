@@ -6,21 +6,23 @@ import { AuthContext } from "../Providers/AuthProvider";
 import useFetchLink from "../utils/useFetchLink";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAdmin from "./../Hooks/useAdmin";
 
-const ClassCard = ({ instructor }) => {
+const ClassCard = ({ class_ }) => {
+  const [role] = useAdmin();
   const { user } = useContext(AuthContext);
   const url = useFetchLink();
   const navigate = useNavigate();
   const location = useLocation();
-  const classes = instructor.classes[0];
 
-  const { name: className, price, availableSeats, image, _id } = classes;
+  const { className, price, availableSeats, classImg, _id, instructorName } =
+    class_;
   const selectClassHandler = () => {
     const selectedClass = {
       classId: _id,
       className,
       price,
-      image,
+      classImg,
       email: user?.email,
     };
     if (user && user?.email) {
@@ -47,9 +49,13 @@ const ClassCard = ({ instructor }) => {
     }
   };
   return (
-    <div className=" bg-white px-6 pt-6 pb-2 my-10 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+    <div
+      className={` ${
+        availableSeats == 0 ? "bg-red-200" : "bg-white"
+      } px-6 pt-6 pb-2 my-10 rounded-xl shadow-lg transform hover:scale-105 transition duration-500`}
+    >
       <div className="relative">
-        <img className="w-full rounded-xl" src={image} alt="Colors" />
+        <img className="w-full rounded-xl" src={classImg} alt="Colors" />
       </div>
       <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
         {className}
@@ -59,7 +65,7 @@ const ClassCard = ({ instructor }) => {
           <span>
             <FaChalkboardTeacher className="text-xl text-light-blue-600"></FaChalkboardTeacher>
           </span>
-          <p>Instrustor : {instructor.name}</p>
+          <p>Instrustor : {instructorName}</p>
         </div>
         <div className="flex gap-3 items-center">
           <span>
@@ -74,6 +80,7 @@ const ClassCard = ({ instructor }) => {
           <p>Price : ${price}</p>
         </div>
         <Button
+          disabled={role === "admin" || role === "instructor" ? true : false}
           onClick={selectClassHandler}
           className="mt-4 text-xl w-full  rounded-xl shadow-lg"
         >

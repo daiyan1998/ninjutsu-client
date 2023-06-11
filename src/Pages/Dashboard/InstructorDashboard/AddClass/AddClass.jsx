@@ -11,7 +11,6 @@ const AddClass = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data, user.email);
     fetch(`${url}/instructorClass`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -19,7 +18,7 @@ const AddClass = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount > 0) {
+        if (data.acknowledged) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -69,7 +68,7 @@ const AddClass = () => {
                 type="number"
                 size="lg"
                 label="Available Seats "
-                {...register("seats", { valueAsNumber: true })}
+                {...register("availableSeats", { valueAsNumber: true })}
               />
               <Input
                 required
