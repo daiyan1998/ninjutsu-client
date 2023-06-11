@@ -1,4 +1,6 @@
+import { Button } from "@material-tailwind/react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import PaymentForm from "./PaymentForm";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -14,6 +16,16 @@ const CheckoutForm = () => {
     const card = elements.getElement(CardElement);
     if (card === null) {
       return;
+    }
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card,
+    });
+
+    if (error) {
+      console.log(error);
+    } else {
+      console.log({ paymentMethod });
     }
   };
   return (
@@ -35,9 +47,10 @@ const CheckoutForm = () => {
             },
           }}
         />
-        <button type="submit" disabled={!stripe}>
+        <Button type="submit" disabled={!stripe}>
           Pay
-        </button>
+        </Button>
+        <PaymentForm></PaymentForm>
       </form>
     </div>
   );

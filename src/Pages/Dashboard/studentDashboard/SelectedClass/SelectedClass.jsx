@@ -15,6 +15,7 @@ import useFetchLink from "../../../../utils/useFetchLink";
 const SelectedClass = () => {
   const [selectedClasses, refetch] = useSelectedClass();
   const url = useFetchLink();
+  console.log(selectedClasses);
   // const [data] = useGetData("selectedClasses", "selectedClasses");
   // console.log("custom", data);
   const TABLE_HEAD = ["Serial", "Image", "Class Name", "Price", "Action"];
@@ -78,76 +79,82 @@ const SelectedClass = () => {
             </tr>
           </thead>
           <tbody>
-            {selectedClasses.map(({ image, price, className, _id }, index) => {
-              const isLast = index === selectedClasses.length - 1;
-              const classes = isLast
-                ? "p-4"
-                : "p-4 border-b border-blue-gray-50";
+            {selectedClasses.map(
+              ({ classImg, price, className, _id }, index) => {
+                const isLast = index === selectedClasses.length - 1;
+                const classes = isLast
+                  ? "p-4"
+                  : "p-4 border-b border-blue-gray-50";
 
-              return (
-                <tr key={name}>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {index + 1}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      <img className="h-16 rounded-lg" src={image} alt="" />
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {className}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      ${price}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      as="a"
-                      href="#"
-                      variant="small"
-                      color="blue"
-                      className="font-medium"
-                    >
-                      <ButtonGroup variant="outlined">
-                        <Button
-                          onClick={() => deleteHandler(_id)}
-                          className="flex items-center gap-1"
-                        >
-                          <AiFillDelete className="text-2xl"></AiFillDelete>
-                          <span>Delete</span>
-                        </Button>
-                        <Button className="flex items-center gap-1">
-                          <MdPayment className="text-2xl"></MdPayment>
-                          <span>Pay</span>
-                        </Button>
-                      </ButtonGroup>
-                    </Typography>
-                  </td>
-                </tr>
-              );
-            })}
+                return (
+                  <tr key={_id}>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {index + 1}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        <img
+                          className="h-16 rounded-lg"
+                          src={classImg}
+                          alt=""
+                        />
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {className}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        ${price}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        as="a"
+                        href="#"
+                        variant="small"
+                        color="blue"
+                        className="font-medium"
+                      >
+                        <ButtonGroup variant="outlined">
+                          <Button
+                            onClick={() => deleteHandler(_id)}
+                            className="flex items-center gap-1"
+                          >
+                            <AiFillDelete className="text-2xl"></AiFillDelete>
+                            <span>Delete</span>
+                          </Button>
+                          <Button className="flex items-center gap-1">
+                            <MdPayment className="text-2xl"></MdPayment>
+                            <span>Pay</span>
+                          </Button>
+                        </ButtonGroup>
+                      </Typography>
+                    </td>
+                  </tr>
+                );
+              }
+            )}
           </tbody>
         </table>
       </Card>

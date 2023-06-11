@@ -80,7 +80,11 @@ const ClassCard = ({ class_ }) => {
           <p>Price : ${price}</p>
         </div>
         <Button
-          disabled={role === "admin" || role === "instructor" ? true : false}
+          disabled={
+            role === "admin" || role === "instructor" || availableSeats == 0
+              ? true
+              : false
+          }
           onClick={selectClassHandler}
           className="mt-4 text-xl w-full  rounded-xl shadow-lg"
         >
