@@ -3,8 +3,6 @@ b712-summer-camp-client-side-daiyan1998 created by GitHub Classroom
 
 # Ninjutsu Karate Class Website
 
-![Logo](logo.png)
-
 ## Project Description
 The Ninjutsu Karate Class website is a platform designed to connect karate enthusiasts, instructors, and administrators. It provides a seamless experience for students to enroll in karate classes, instructors to manage their classes, and administrators to oversee the operations of the platform.
 
@@ -32,4 +30,5 @@ The Ninjutsu Karate Class website is built using the following packages and tech
 - Swiper
 
 Please note that this is a high-level overview of the project and there may be additional features and technologies implemented based on the specific requirements of your application.
-[Live Link](https://ninjutsu-68020.web.app/)
+
+## [Live Link](https://ninjutsu-68020.web.app/)
