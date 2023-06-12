@@ -7,14 +7,15 @@ import { AuthContext } from "../Providers/AuthProvider";
 const useSelectedClass = () => {
   const { user } = useContext(AuthContext);
   const url = useFetchLink();
-  const { data: selectedClasses = [], refetch } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["selectedClasses"],
     queryFn: async () => {
-      const res = await fetch(`${url}/selectedClasses?email=${user.email}`);
+      const res = await fetch(`${url}/selectedClasses?email=${user?.email}`);
       return res.json();
     },
   });
-  return [selectedClasses, refetch];
+
+  return [data, refetch];
 };
 
 export default useSelectedClass;

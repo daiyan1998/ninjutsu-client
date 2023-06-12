@@ -11,6 +11,7 @@ const AddClass = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
+    console.log("data:", data);
     fetch(`${url}/instructorClass`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

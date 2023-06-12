@@ -4,20 +4,18 @@ import {
   Button,
   ButtonGroup,
   Card,
-  CardHeader,
   Typography,
 } from "@material-tailwind/react";
 import { AiFillDelete } from "react-icons/ai";
-import { MdPayment } from "react-icons/md";
 import Swal from "sweetalert2";
 import useFetchLink from "../../../../utils/useFetchLink";
+import Heading from "../../../Shared/Heading/Heading";
 
 const SelectedClass = () => {
-  const [selectedClasses, refetch] = useSelectedClass();
+  const [data, refetch] = useSelectedClass();
+  const selectedClasses = data?.classes;
   const url = useFetchLink();
-  console.log(selectedClasses);
-  // const [data] = useGetData("selectedClasses", "selectedClasses");
-  // console.log("custom", data);
+
   const TABLE_HEAD = ["Serial", "Image", "Class Name", "Price", "Action"];
   const deleteHandler = (id) => {
     Swal.fire({
@@ -46,19 +44,15 @@ const SelectedClass = () => {
   return (
     <>
       <Card className="overflow-scroll h-full w-full mt-8">
-        <CardHeader floated={false} shadow={false} className="rounded-none">
-          <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
-            <div>
-              <Typography variant="h5" color="blue-gray">
-                My Selected Classes
-              </Typography>
-              <Typography color="gray" className="mt-1 font-normal">
-                These are details about the Selected Classes
-              </Typography>
-            </div>
-            <div className="flex w-full shrink-0 gap-2 md:w-max"></div>
+        <div className="flex flex-col justify-center mb-12">
+          <Heading heading={"Selected Classes"}></Heading>
+          <Typography variant="h2" className="text-center mb-4">
+            Total Price : ${data?.totalPrice}
+          </Typography>
+          <div className="flex justify-center">
+            <Button>Payment</Button>
           </div>
-        </CardHeader>
+        </div>
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
@@ -79,7 +73,7 @@ const SelectedClass = () => {
             </tr>
           </thead>
           <tbody>
-            {selectedClasses.map(
+            {selectedClasses?.map(
               ({ classImg, price, className, _id }, index) => {
                 const isLast = index === selectedClasses.length - 1;
                 const classes = isLast
@@ -144,10 +138,10 @@ const SelectedClass = () => {
                             <AiFillDelete className="text-2xl"></AiFillDelete>
                             <span>Delete</span>
                           </Button>
-                          <Button className="flex items-center gap-1">
+                          {/* <Button className="flex items-center gap-1">
                             <MdPayment className="text-2xl"></MdPayment>
                             <span>Pay</span>
-                          </Button>
+                          </Button> */}
                         </ButtonGroup>
                       </Typography>
                     </td>

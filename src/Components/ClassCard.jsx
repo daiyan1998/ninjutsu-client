@@ -24,6 +24,7 @@ const ClassCard = ({ class_ }) => {
       price,
       classImg,
       email: user?.email,
+      enrolled: false,
     };
     if (user && user?.email) {
       fetch(`${url}/selectedClasses`, {
@@ -44,7 +45,7 @@ const ClassCard = ({ class_ }) => {
           }
         });
     } else {
-      alert("login first");
+      Swal.fire({ title: "You have to login first", icon: "warning" });
       navigate("/signin", { state: { from: location } });
     }
   };

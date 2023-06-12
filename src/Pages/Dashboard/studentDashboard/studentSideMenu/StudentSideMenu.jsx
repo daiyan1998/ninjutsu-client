@@ -23,12 +23,14 @@ const StudentSideMenu = () => {
             Selected Classes
           </ListItem>
         </Link>
-        <ListItem>
-          <ListItemPrefix>
-            <FaRegAddressCard className="h-5 w-5" />
-          </ListItemPrefix>
-          Enrolled Classes
-        </ListItem>
+        <Link to={"enrolled"}>
+          <ListItem>
+            <ListItemPrefix>
+              <FaRegAddressCard className="h-5 w-5" />
+            </ListItemPrefix>
+            Enrolled Classes
+          </ListItem>
+        </Link>
         <Link to={"payment"}>
           <ListItem>
             <ListItemPrefix>

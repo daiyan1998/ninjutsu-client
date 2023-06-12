@@ -170,8 +170,11 @@ const ManageClasses = () => {
                         >
                           Deny
                         </Button>
-                        <Button>
-                          <FeedbackModal name={instructorName}></FeedbackModal>
+                        <Button disabled={status === "approved" ? true : false}>
+                          <FeedbackModal
+                            id={_id}
+                            name={instructorName}
+                          ></FeedbackModal>
                         </Button>
                       </ButtonGroup>
                     </td>

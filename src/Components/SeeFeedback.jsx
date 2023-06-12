@@ -6,8 +6,9 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-const SeeFeedback = () => {
+const SeeFeedback = ({ feedback }) => {
   const [open, setOpen] = useState(false);
+  console.log(feedback);
 
   const handleOpen = () => setOpen(!open);
 
@@ -24,10 +25,7 @@ const SeeFeedback = () => {
       >
         <DialogHeader></DialogHeader>
         <DialogBody divider>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ad
-          reprehenderit omnis perspiciatis aut odit! Unde architecto
-          perspiciatis, dolorum dolorem iure quia saepe autem accusamus eum
-          praesentium magni corrupti explicabo!
+          {!feedback ? `Admin didn't give feedback` : feedback}
         </DialogBody>
         <DialogFooter>
           <Button

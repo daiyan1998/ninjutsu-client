@@ -49,76 +49,78 @@ const MyClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {instructorClass.map(({ className, price, status, _id }, index) => {
-              const isLast = index === instructorClass.length - 1;
-              const classes = isLast
-                ? "p-4"
-                : "p-4 border-b border-blue-gray-50";
+            {instructorClass.map(
+              ({ className, price, status, _id, feedback }, index) => {
+                const isLast = index === instructorClass.length - 1;
+                const classes = isLast
+                  ? "p-4"
+                  : "p-4 border-b border-blue-gray-50";
 
-              return (
-                <tr key={_id}>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-bold"
-                    >
-                      {index + 1}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {className}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      0
-                    </Typography>
-                  </td>
+                return (
+                  <tr key={_id}>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-bold"
+                      >
+                        {index + 1}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {className}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        0
+                      </Typography>
+                    </td>
 
-                  <td className={classes}>${price}</td>
-                  <td className={classes}>
-                    <div className="w-max">
-                      <Chip
-                        size="sm"
-                        variant="ghost"
-                        value={status}
-                        color={
-                          status === "approved"
-                            ? "green"
-                            : status === "pending"
-                            ? "amber"
-                            : "red"
-                        }
-                      />
-                    </div>
-                  </td>
-                  <td>
-                    {status === "denied" ? (
-                      <SeeFeedback></SeeFeedback>
-                    ) : (
-                      <Button disabled={true}>No Feedback</Button>
-                    )}
-                  </td>
-                  <td className={classes}>
-                    <Tooltip content="Edit User">
-                      <IconButton variant="text" color="blue-gray">
-                        <PencilIcon className="h-4 w-4" />
-                      </IconButton>
-                    </Tooltip>
-                  </td>
-                </tr>
-              );
-            })}
+                    <td className={classes}>${price}</td>
+                    <td className={classes}>
+                      <div className="w-max">
+                        <Chip
+                          size="sm"
+                          variant="ghost"
+                          value={status}
+                          color={
+                            status === "approved"
+                              ? "green"
+                              : status === "pending"
+                              ? "amber"
+                              : "red"
+                          }
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      {status === "denied" ? (
+                        <SeeFeedback feedback={feedback}></SeeFeedback>
+                      ) : (
+                        <Button disabled={true}>No Feedback</Button>
+                      )}
+                    </td>
+                    <td className={classes}>
+                      <Tooltip content="Edit User">
+                        <IconButton variant="text" color="blue-gray">
+                          <PencilIcon className="h-4 w-4" />
+                        </IconButton>
+                      </Tooltip>
+                    </td>
+                  </tr>
+                );
+              }
+            )}
           </tbody>
         </table>
       </CardBody>
