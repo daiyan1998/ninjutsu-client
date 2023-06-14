@@ -11,7 +11,8 @@ const CheckoutForm = ({ data }) => {
   const url = useFetchLink();
   const { totalPrice } = data;
   const { classes } = data;
-  const id = classes.map((cls) => cls.classId);
+  // const id = classes.map((cls) => cls.classId);
+  console.log(data);
   // Stripe
   const stripe = useStripe();
   const elements = useElements();

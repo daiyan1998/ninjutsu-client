@@ -1,5 +1,5 @@
 const useFetchLink = () => {
-  const url = "http://localhost:5000";
+  const url = "https://summer-camp-server-daiyan1998.vercel.app/";
   return url;
 };
 
