@@ -5,6 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import useFetchLink from "../../../../utils/useFetchLink";
 import useAuth from "../../../../Hooks/useAuth";
 import { useQuery } from "react-query";
+import axios from "axios";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 const Payment = () => {
@@ -13,8 +14,11 @@ const Payment = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["selectedClasses"],
     queryFn: async () => {
-      const res = await fetch(`${url}/selectedClasses?email=${user?.email}`);
-      return res.json();
+      const res = await axios.get(
+        `${url}/selectedClasses?email=${user?.email}`
+      );
+      if (res.data) return res.data;
+      else return { message: "fetch failed" };
     },
   });
   return (

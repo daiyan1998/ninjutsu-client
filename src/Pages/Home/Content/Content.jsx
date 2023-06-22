@@ -1,6 +1,13 @@
+import App, { ThemeContext } from "../../../App";
+
 const Content = () => {
+  const { theme } = App(ThemeContext);
   return (
-    <div className="bg-gray-50 py-20 flex flex-col items-center justify-center">
+    <div
+      className={`${
+        theme !== "light" ? "bg-gray-50" : "dark"
+      } py-20 flex flex-col items-center justify-center`}
+    >
       <div className="xl:w-1/2 w-11/12">
         <h1
           role="heading"

@@ -7,8 +7,10 @@ import useFetchLink from "../utils/useFetchLink";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAdmin from "./../Hooks/useAdmin";
+import App, { ThemeContext } from "../App";
 
 const ClassCard = ({ class_ }) => {
+  const { theme } = App(ThemeContext);
   const [role] = useAdmin();
   const { user } = useContext(AuthContext);
   const url = useFetchLink();
@@ -27,6 +29,7 @@ const ClassCard = ({ class_ }) => {
       enrolled: false,
     };
     if (user && user?.email) {
+      console.log("clicked");
       fetch(`${url}/selectedClasses`, {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -82,7 +85,7 @@ const ClassCard = ({ class_ }) => {
         </div>
         <Button
           disabled={
-            role === "admin" || role === "instructor" || availableSeats == 0
+            role === "admin" || role === "instructor" || availableSeats < 1
               ? true
               : false
           }

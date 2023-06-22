@@ -14,7 +14,7 @@
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
     "axios": "^1.4.0",
-    "firebase": "^9.22.1",
+    "firebase": "^9.22.2",
     "framer-motion": "^10.12.16",
     "heroicons": "^2.0.18",
     "localforage": "^1.10.0",

@@ -50,7 +50,10 @@ const MyClasses = () => {
           </thead>
           <tbody>
             {instructorClass.map(
-              ({ className, price, status, _id, feedback }, index) => {
+              (
+                { className, price, status, _id, feedback, enrolledStudents },
+                index
+              ) => {
                 const isLast = index === instructorClass.length - 1;
                 const classes = isLast
                   ? "p-4"
@@ -82,7 +85,7 @@ const MyClasses = () => {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        0
+                        {enrolledStudents}
                       </Typography>
                     </td>
 

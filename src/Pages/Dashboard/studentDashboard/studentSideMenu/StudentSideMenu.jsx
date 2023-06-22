@@ -39,6 +39,14 @@ const StudentSideMenu = () => {
             Payment
           </ListItem>
         </Link>
+        <Link to={"paymentHistory"}>
+          <ListItem>
+            <ListItemPrefix>
+              <FaMoneyCheck className="h-5 w-5" />
+            </ListItemPrefix>
+            Payment History
+          </ListItem>
+        </Link>
       </List>
     </>
   );

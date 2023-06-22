@@ -15,5 +15,5 @@ module.exports = withMT({
     extend: {},
   },
   plugins: [],
-  darkMode: "dark",
+  darkMode: "class",
 });

@@ -86,6 +86,13 @@ const AddClass = () => {
               size="lg"
               label=""
             />
+            <input
+              className="hidden"
+              defaultValue={0}
+              {...register("enrolledStudents", { valueAsNumber: true })}
+              size="lg"
+              label=""
+            />
           </div>
           <Button type="submit" className="mt-6" fullWidth>
             Add

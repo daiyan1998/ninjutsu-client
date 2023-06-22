@@ -10,9 +10,12 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import logo from "../../../assets/shuriken.png";
+import { FaSun } from "react-icons/fa";
+import { ThemeContext } from "../../../App";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { handleThemeSwitch } = useContext(ThemeContext);
   const [openNav, setOpenNav] = useState(false);
 
   useEffect(() => {
@@ -71,7 +74,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar className="mx-auto  rounded-none max-w-screen-2xl py-2 px-4 lg:px-8 lg:py-4">
+      <Navbar className="mx-auto rounded-none max-w-screen-2xl py-2 px-4 lg:px-8 lg:py-4">
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
@@ -82,6 +85,12 @@ const NavBar = () => {
             <span className="font-semibold">NinJutsu</span>
           </Typography>
           <div className="hidden lg:block">{navList}</div>
+          <div>
+            <Button onClick={handleThemeSwitch}>
+              <FaSun className="text-2xl sun"></FaSun>
+            </Button>
+            {/* <BsFillMoonFill className="text-2xl moon"></BsFillMoonFill> */}
+          </div>
           <div className="flex gap-2 items-center">
             {user ? (
               <>
