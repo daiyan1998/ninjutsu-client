@@ -1,6 +1,3 @@
-# b712-summer-camp-client-side-daiyan1998
-b712-summer-camp-client-side-daiyan1998 created by GitHub Classroom
-
 # Ninjutsu Karate Class Website
 
 ## Project Description
