@@ -5,13 +5,15 @@ import {
   List,
   ListItem,
   ListItemPrefix,
+  IconButton,
 } from "@material-tailwind/react";
-// import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
+import { AiOutlineMenuFold } from "react-icons/ai";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import StudentSideMenu from "../Pages/Dashboard/studentDashboard/studentSideMenu/StudentSideMenu";
 import AdminSideMenu from "../Pages/Dashboard/AdminDashboard/AdminSideMenu/AdminSideMenu";
@@ -21,26 +23,55 @@ import InstructorSideMenu from "../Pages/Dashboard/InstructorDashboard/Instructo
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const openDrawer = () => setOpen(true);
-  // const isAdmin = true;
   const [role] = useAdmin();
-  // const closeDrawer = () => setOpen(false);
+  const closeDrawer = () => setOpen(false);
 
+  // Calculate Screen Width
+  function getCurrentDimention() {
+    const screenWidth = window.innerWidth;
+    return screenWidth;
+  }
+
+  const [screenSize, setScreenSize] = useState(getCurrentDimention);
+  const smallScreen = screenSize < 720 ? true : false;
+
+  useEffect(() => {
+    const updateDimention = () => {
+      setScreenSize(getCurrentDimention());
+    };
+    window.addEventListener("resize", updateDimention);
+
+    return () => {
+      window.removeEventListener("resize", updateDimention);
+    };
+  }, [screenSize]);
   return (
     <>
       <div>
-        <Button className={open ? "hidden" : "block"} onClick={openDrawer}>
-          Open Drawer
-        </Button>
+        <button
+          className={`${open ? "hidden" : "block"} absolute top-0 left-0`}
+          onClick={openDrawer}
+        >
+          <AiOutlineMenuFold className="text-3xl text-light-blue-700" />
+        </button>
         <Outlet></Outlet>
       </div>
-      <Drawer open={open} overlay={false}>
+      <Drawer
+        open={open}
+        // onClose={closeDrawer}
+        onClick={smallScreen ? closeDrawer : false}
+        overlay={false}
+        className=" bg-blue-gray-50 w-[250px] duration-300 overflow-hidden"
+      >
         <div className="mb-2 flex items-center justify-between p-4">
           <Typography variant="h5" color="blue-gray">
             Ninjutsu
           </Typography>
-          {/* <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
-            <XMarkIcon strokeWidth={2} className="h-5 w-5" />
-          </IconButton> */}
+          {smallScreen && (
+            <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+              <XMarkIcon strokeWidth={2} className="h-5 w-5" />
+            </IconButton>
+          )}
         </div>
         {role == "admin" ? (
           <AdminSideMenu></AdminSideMenu>

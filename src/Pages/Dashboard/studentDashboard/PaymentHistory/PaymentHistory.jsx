@@ -8,21 +8,26 @@ import axios from "axios";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
+  const url = useFetchLink();
   const { data, isLoading } = useQuery({
-    queryKey: ["selectedClasses"],
+    queryKey: ["paymentHistory"],
     queryFn: async () => {
-      const res = await axios(`${url}/payment-history?email=${user?.email}`);
+      const res = await axios.get(
+        `${url}/payment-history?email=${user?.email}`
+      );
+      // if (isLoading) return <Spinner></Spinner>;
       return res.data;
     },
   });
-  console.log(isLoading);
-  const url = useFetchLink();
   const TABLE_HEAD = ["#", "Total Items", "Price"];
-  console.log(data);
+  console.log({ isLoading, data });
+
   return (
     <>
       {isLoading ? (
-        <Spinner></Spinner>
+        <div className="h-screen flex justify-center items-center">
+          <Spinner className="h-10 w-10"></Spinner>
+        </div>
       ) : (
         <div>
           {data ? (

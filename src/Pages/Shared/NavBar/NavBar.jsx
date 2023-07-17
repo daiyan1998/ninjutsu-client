@@ -86,9 +86,9 @@ const NavBar = () => {
           </Typography>
           <div className="hidden lg:block">{navList}</div>
           <div>
-            <Button onClick={handleThemeSwitch}>
+            {/* <Button onClick={handleThemeSwitch}>
               <FaSun className="text-2xl sun"></FaSun>
-            </Button>
+            </Button> */}
             {/* <BsFillMoonFill className="text-2xl moon"></BsFillMoonFill> */}
           </div>
           <div className="flex gap-2 items-center">

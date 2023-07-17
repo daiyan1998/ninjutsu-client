@@ -26,7 +26,7 @@ const ManageClasses = () => {
     "Status",
     "Action",
   ];
-  // T:
+
   const handleApproval = (id, status) => {
     fetch(`${url}/instructorClass/${id}/${status}`, {
       method: "PATCH",
@@ -147,7 +147,7 @@ const ManageClasses = () => {
                         />
                       </div>
                     </td>
-                    {/* TODO: */}
+
                     <td className={classes}>
                       <ButtonGroup variant="outlined">
                         <Button

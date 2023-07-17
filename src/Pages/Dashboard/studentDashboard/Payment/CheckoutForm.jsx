@@ -26,7 +26,6 @@ const CheckoutForm = ({ data }) => {
       setClientSecret(res.data.clientSecret);
     });
   }, [axios]);
-  console.log(id?.length);
   const enroll = () => {
     console.log("enrolled");
     const paymentHisory = {
